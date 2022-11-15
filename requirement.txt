@@ -16,7 +16,7 @@ Flask==2.1.0
 Flask-MySQLdb==1.0.1
 Flask-Session==0.3.2
 Flask-SQLAlchemy==2.4.4
-Flask-WTF==0.14.3
+Flask-WTF==1.0.1
 fonttools==4.37.4
 idna==3.1
 importlib-metadata==5.0.0
@@ -53,9 +53,8 @@ virtualenv==20.16.3
 virtualenv-clone==0.5.7
 Werkzeug==2.0.3
 wrapt==1.12.1
-WTForms==2.3.3
+WTForms==3.0.1
 WTForms-Components==0.10.5
 WTForms-SQLAlchemy==0.2
 XlsxWriter==3.0.3
 zipp==3.10.0 
-flask-wtf==0.14.3

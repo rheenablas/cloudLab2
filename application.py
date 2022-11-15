@@ -1,19 +1,29 @@
 import csv
 from flask import Flask, render_template, request, url_for, redirect, session, g
-from forms import QueryForm
 from flask_session import Session
 import pymysql as db
+from flask_wtf import FlaskForm
+from wtforms import SubmitField, IntegerField, StringField, FloatField, SelectField
+from wtforms.validators import NumberRange, Optional
 
 
-app = Flask(__name__)
-app.config["SECRET_KEY"] = "sec-key-cloud3204-lab"
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
+application = Flask(__name__)
+application.config["SECRET_KEY"] = "sec-key-cloud3204-lab"
+
 
 descFlag = True
-Session(app)
+Session(application)
 
-@app.before_request
+class QueryForm(FlaskForm):
+    age = IntegerField("Age: ", validators=[Optional(strip_whitespace=True)])
+    #rate = FloatField("Rate: ", validators=[Optional(strip_whitespace=True)])
+    year = IntegerField("Year: ", validators=[Optional(strip_whitespace=True)])
+    gender = SelectField('Gender: ', choices = [('', ''), ("Males", "Males"), ("Females", "Females")])
+    stat_code = SelectField("Statistic Code: ", choices = [('', ''), ("VSA49C01", "VSA49C01"), ("VSA49C02", "VSA49C02")])
+    submit = SubmitField("Query")
+
+
+@application.before_request
 def startUp():
     g.buttonFlag = session.get("buttonFlag", True)
 
@@ -125,18 +135,18 @@ def getHeader():
     return header
 
 
-@app.route("/", methods=["GET"])
+@application.route("/", methods=["GET"])
 def home():
     return render_template("home.html")
     
 
-@app.route("/data", methods=["GET", "POST"])
+@application.route("/data", methods=["GET", "POST"])
 def data():
     header, rows = readData()
     return render_template("data.html", header=header, rows=rows)
 
 
-@app.route("/dataSaved", methods=["GET", "POST"])
+@application.route("/dataSaved", methods=["GET", "POST"])
 def dataSaved():
     session['buttonFlag'] = False   #data is now generated
     header = getHeader()
@@ -147,14 +157,14 @@ def dataSaved():
     return render_template("dataSaved.html", header=header, rows=rows, txt=txt)
 
 
-@app.route("/Sort/")
+@application.route("/Sort/")
 def Sort():
     header = getHeader() 
     rows = readFromTable()
     return render_template("dataSaved.html", rows=rows, header=header)
 
 
-@app.route("/sort/<sortBy>")
+@application.route("/sort/<sortBy>")
 def sort(sortBy):
     global descFlag
     header = getHeader() 
@@ -167,7 +177,7 @@ def sort(sortBy):
     return render_template("dataSaved.html", rows=rows, header=header)
 
 
-@app.route("/query", methods=["GET", "POST"])
+@application.route("/query", methods=["GET", "POST"])
 def query():
     query_result = []
     form = QueryForm()

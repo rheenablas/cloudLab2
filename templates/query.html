@@ -35,10 +35,15 @@
         {{ form.submit() }}
         </div>
     </form>
-    
-    {% if query_result != None %}
+
+
     <br />
     <br />
+    {% if query_result|length == 0 and query != None %}
+
+        <p>No match found. </p>
+
+    {% elif query_result|length > 0 %}
         <p>Query: 
             <ul>
                 {% for key, value in query.items() %}
@@ -57,17 +62,15 @@
             </tr>
             
             {% for data in query_result %}
-                <tr>          
-                    <td>{{ loop.index }}</td>  
-                    <td> {{ data["AGE"] }} </td>
-                    <td> {{ data["YEAR"] }} </td>
-                    <td> {{ data["CODE"] }} </td>
-                    <td> {{ data["GENDER"] }} </td>
-                    <td> {{ data["RATE"] }} </td>
-                    
+                <tr> 
+                    <td>{{ loop.index }}</td> 
+                    {% for item in data %}         
+                    <td> {{ item }} </td>
+                    {% endfor %}
                 </tr>
             {% endfor %}
         </table>
+
     {% endif %}
 
 {% endblock %}

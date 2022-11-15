@@ -2,4 +2,11 @@ req.txt
 t1.zip
 schema.sql
 database.py
-application.py
+__pycache__/
+flask_session/
+forms.py
+requirement.txt
+static.zip
+app.database
+appOrig.py
+d_copy.csv
