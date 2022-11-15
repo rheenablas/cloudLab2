@@ -1,0 +1,126 @@
+
+html{
+    background-color: rgb(169, 221, 223);
+    display: block;
+    font-family: 'Roboto', sans-serif;
+
+}
+body{
+    padding: 1.5em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    margin: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+header{
+    border: rgb(0, 0, 0) 2px solid;
+    border-radius: 2em;
+    background-color: rgb(183, 230, 239);
+}
+header *{
+    text-align: center;
+}
+h1, h2{
+    font-size: 1.5em;
+    padding-left: 0.5em;
+    text-align: center;
+}
+header nav{
+    text-align: right;
+    padding-right: 2em;
+}
+main{
+    margin-top: 3rem;
+    text-align: center;
+}
+
+section > nav > ul, nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly ;
+}
+li ul, p ul {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    flex-direction: column;
+}
+ul li{
+    list-style-type: none;
+    margin: 0.5em;
+}
+
+form {
+    width: 45%;
+    padding: 2em;
+    margin: 0 auto;
+    padding-bottom: 2em;
+}
+
+input[type='submit']{
+    float: right;
+    margin: 0 3em 2em 0;
+}
+input[type="text"], select{    
+    margin-bottom: 1em;
+    float: left;   
+    width: 30%;
+}
+
+div {
+    padding: auto;
+    float: right;
+}
+
+label {
+    float: left;
+    width: 10em;
+    padding-left: 0;
+    text-align: right;
+    clear: left;
+}
+
+table{
+    border: rgb(0, 0, 0) 2px solid;
+    border-radius: 2em;
+    background-color: rgb(183, 230, 239);
+    margin: 0 auto;
+    padding-top: 0.5em;
+    width: 50%;
+}
+table *{
+    padding: 0em;
+    text-align: center;
+}
+
+caption{
+    padding-bottom: 0.5em;
+    font-size: 1.25em;
+}
+
+tr:hover {
+    background-color: rgb(245, 170, 142);
+}
+footer{
+    background-color: black;
+    color: whitesmoke;
+}
+
+a:hover{
+    color: white;
+    background-color: rgb(94, 38, 126);
+}
+a button{
+    margin-bottom: 1.5em;
+}
+footer{
+    background-color: black;
+    color:silver;
+    bottom: 0;
+    width: 100%;
+}
+footer p{
+    padding-left: 1.5em;
+}

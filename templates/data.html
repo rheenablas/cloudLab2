@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h2>Data</h2>
+        <p>
+            <a href="dataSaved"><button>Save to database </button></a>
+        </p>
+        <table>
+            <caption><b>Marriages per 1000</b></caption>
+            <tr>
+                <th>Index</th>
+                {% for title in header %}
+                    <th scope="col">{{ title }}</th>
+                {% endfor %}
+
+
+            </tr>
+            
+            {% for data in rows %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    {% for item in data %}
+                        <td> {{ item }} </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    
+
+
+{% endblock %}

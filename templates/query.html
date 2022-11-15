@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+
+{% block main_content %}
+    <h2>Query</h2>
+    <form action="", method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.age.label }}
+        {{ form.age()}}
+
+        <div>{% for error in form.age.errors %}
+            {{ error }}
+        {% endfor %}
+        </div>
+        <br />
+
+        {{ form.year.label }}
+        {{ form.year()}}
+        <div>
+        {% for error in form.year.errors %}
+            {{ error }}
+        {% endfor %}
+        </div>
+        <br />
+
+        {{ form.gender.label }}
+        {{ form.gender()}}
+        <br />
+
+        {{ form.stat_code.label }}
+        
+        {{ form.stat_code()}}
+        <br/>
+        <div>
+        {{ form.submit() }}
+        </div>
+    </form>
+    
+    {% if query_result != None %}
+    <br />
+    <br />
+        <p>Query: 
+            <ul>
+                {% for key, value in query.items() %}
+                    {% if value != None and value != "" %}
+                        <li>{{ key }}: {{ value }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </p>
+        <table>
+            <tr>
+                <th scope="col">Index</th>
+                {% for title in header %}
+                    <th scope="col">{{ title }}</th>
+                {% endfor %}
+            </tr>
+            
+            {% for data in query_result %}
+                <tr>          
+                    <td>{{ loop.index }}</td>  
+                    <td> {{ data["AGE"] }} </td>
+                    <td> {{ data["YEAR"] }} </td>
+                    <td> {{ data["CODE"] }} </td>
+                    <td> {{ data["GENDER"] }} </td>
+                    <td> {{ data["RATE"] }} </td>
+                    
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h2>Data</h2>
+
+            <p><a href="{{ url_for('query') }}">Make query</a></p>
+
+
+        <table>
+            <caption><b>Marriages per 1000</b></caption>
+            <tr>
+                <th>Index</th>
+                {% for title in header %}
+                    <th scope="col"><a href="{{ url_for('sort', sortBy=title )}}">{{ title }} </a> </th>
+                {% endfor %}
+            </tr>
+            
+
+            {% for data in rows %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    {% for item in data %}
+                        
+                        <td> {{ item }} </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    
+
+
+{% endblock %}

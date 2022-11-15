@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Cloud Infrastructure and Services</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" />
+
+</head>
+
+<body>
+    <header>
+        <h1>Cloud Infrastructure and Services</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                {% if g.buttonFlag %}
+                <li><a href="/data">Data</a></li>
+
+                {% else %}
+                <li><a href="/Sort">Data</a></li>
+                {% endif %}
+                <li><a href="/query">Query</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block main_content %}
+
+        {% endblock %}
+
+    </main>
+    
+</body>
+<footer>
+    <p>© To God be the glory!</p>
+</footer>
+</html>
